@@ -71,7 +71,8 @@
 			"    static void testBatch() {",
 			"        Test.setMock(HttpCalloutMock.class, new Mock());",
 			"        $0",
-		    "    }"
+		    "    }",
+			"}",
 		],
 		"description": "Apex Test w/ Mock Class Skeleton"
 	},
@@ -85,7 +86,8 @@
 			"    @isTest(seeAllData=${1:false})",
 			"    static void testBatch() {",
 			"        $0",
-		    "    }"
+		    "    }",
+			"}",
 		],
 		"description": "Apex Test w/ Mock Class Skeleton"
 	},
