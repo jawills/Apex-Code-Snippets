@@ -1,0 +1,24 @@
+{
+    "name": "apex-skeleton-snippets",
+    "displayName": "Apex Skeleton Snippets",
+    "description": "Speed up your Apex (Salesforce) development with these predefined Apex code snippets.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.68.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/jawills/Apex-Code-Snippets"
+    },
+    "contributes": {
+        "snippets": [
+            {
+                "language": "apex",
+                "path": "./snippets/apex.code-snippets"
+            }
+        ]
+    }
+}

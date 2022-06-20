@@ -1,0 +1,112 @@
+{
+	// Snippets for Apex Class Skeletons
+	"Controller": {
+		"prefix": "controller",
+		"body": [
+			"public class ${TM_FILENAME_BASE} {",
+			"    public Id ${1:accId} {get;set;}",
+			"    public ${2:Account} ${3:acc} {get;set;}",
+			"    ",
+			"    public ${TM_FILENAME_BASE}(ApexPages.StandardController controller) {",
+			"        ${1:accId} = controller.getRecord().Id;",
+			"        ${3:acc} = [SELECT Id FROM ${2:Account} WHERE Id =: ${1:accId}];",
+			"    }",
+			"    ",
+			"    public PageReference ${4:action}(){",
+			"        ${0}",
+			"        return new PageReference('/'+ ${1:accId});",
+			"    }",
+			"}",
+			
+		],
+		"description": "Apex Controller Class Skeleton"
+	},
+	"Batch": {
+		"prefix": "batch",
+		"body": [
+			"public class ${TM_FILENAME_BASE} implements Database.Batchable<sobject>,Database.AllowsCallouts, Schedulable{",
+			"    public void execute(SchedulableContext SC){",
+			"        ${TM_FILENAME_BASE} batch= new ${TM_FILENAME_BASE}();",
+			"        Database.executeBatch(batch, ${1:200});",
+			"    }",
+			"",
+			"    public Database.QueryLocator start(Database.BatchableContext BC){",
+			"        return Database.getQueryLocator('${2:SELECT Id FROM Account}');",
+			"    }",
+			"",
+			"    public void Execute(Database.BatchableContext BC,List<${3:Account}> ${4:accList}){",
+			"        $0",
+			"    }",
+			"",
+			"    public void finish(Database.BatchableContext BC){",
+			"        System.debug('Finished');",
+			"    }",
+			"}",
+			
+		],
+		"description": "Apex Batch Class Skeleton"
+	},
+
+	"Test Mock": {
+		"prefix": "test mock",
+		"body": [
+			"@isTest",
+			"public class ${TM_FILENAME_BASE} {",
+			"",
+			"    private class Mock implements HttpCalloutMock {",
+			"        public HTTPResponse respond(HTTPRequest req) {",
+			"            HTTPResponse res = new HTTPResponse();",
+			"            if (req.getEndpoint().endsWith('${1:endpoint}')) {",
+			"                res.setBody('${2:body}');",
+			"                res.setStatusCode(200);",
+			"            } else {",
+            "                System.assert(false, 'unexpected endpoint ' + req.getEndpoint());",
+            "                return null;",
+            "            }",
+            "            return res;",
+        	"        }",
+			"    }",
+			"",
+			"    @isTest(seeAllData=${3:false})",
+			"    static void testBatch() {",
+			"        Test.setMock(HttpCalloutMock.class, new Mock());",
+			"        $0",
+		    "    }"
+		],
+		"description": "Apex Test w/ Mock Class Skeleton"
+	},
+
+	"Test": {
+		"prefix": "test",
+		"body": [
+			"@isTest",
+			"public class ${TM_FILENAME_BASE} {",
+			"",
+			"    @isTest(seeAllData=${1:false})",
+			"    static void testBatch() {",
+			"        $0",
+		    "    }"
+		],
+		"description": "Apex Test w/ Mock Class Skeleton"
+	},
+
+	"Queueable": {
+		"prefix": "queueable",
+		"body": [
+			"public class  ${TM_FILENAME_BASE} implements Queueable, Database.AllowsCallouts{",
+			"    public List<${1:Account}> ${2:accs};",
+			"    Integer stackDepth;",
+			"    public  ${TM_FILENAME_BASE}(List<${1:Account}> ${2:accs}, Integer stackDepth) {",
+			"        this.${2:accs} = ${2:accs};",
+			"        this.stackDepth = stackDepth;",
+			"    }",
+			"",
+			"    public void execute(QueueableContext context) {",
+			"        $0",
+			"    }",
+			"}"
+
+		],
+		"description": "Apex Test Class Skeleton"
+	}
+}
