@@ -13,7 +13,7 @@ Code skeletons for the following classes:
 
 ## Tutorial
 
-Please see this [Youtube](https://www.youtube.com/c/JustinWills) video for installation instructions and practical demonstrations.
+Please see this [Youtube](https://www.youtube.com/watch?v=cDSaStsll6E) video for installation instructions and practical demonstrations.
 
 ## Release Notes
 
